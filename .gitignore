@@ -1,0 +1,10 @@
+# IDE specific files
+.idea/
+*.iml
+
+# Compiled output
+out/
+*.class
+
+# Other files
+*.mkv
