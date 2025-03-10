@@ -1,0 +1,32 @@
+# IDE specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+
+# Compiled output
+out/
+/out/
+/target/
+*.class
+
+# Logs
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Исключение для необходимых jar файлов
+!freemarker.jar
+
+# Другие файлы
+.DS_Store
+*.mkv
