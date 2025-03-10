@@ -7,4 +7,4 @@ out/
 *.class
 
 # Other files
-*.mkv
+*.mkv.DS_Store
