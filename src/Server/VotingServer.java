@@ -27,6 +27,7 @@ public class VotingServer extends BasicServer {
         registerGet("/votes", this::handleVotesPage);
         registerGet("/vote", this::handleVoteGet);
         registerPost("/vote", this::handleVotePost);
+        registerResetHandler();
 
         registerFileHandler(".css", ContentType.TEXT_CSS);
         registerFileHandler(".html", ContentType.TEXT_HTML);
@@ -42,6 +43,25 @@ public class VotingServer extends BasicServer {
         }
 
         registerStaticResourcesHandler();
+    }
+
+    private void registerResetHandler() {
+        registerGet("/reset", this::handleReset);
+    }
+
+    private void handleReset(HttpExchange exchange) {
+        String userIp = exchange.getRemoteAddress().getAddress().getHostAddress();
+
+        if (candidateService.hasUserVoted(userIp)) {
+            String candidateId = candidateService.getUserVote(userIp);
+            candidateService.removeUserVote(userIp);
+        }
+
+        Cookie resetCookie = Cookie.make(VOTE_COOKIE_NAME, "");
+        resetCookie.setMaxAge(0);
+        setCookie(exchange, resetCookie);
+
+        redirect303(exchange, "/");
     }
 
     private void handleMainPage(HttpExchange exchange) {
@@ -95,14 +115,7 @@ public class VotingServer extends BasicServer {
         String userIp = exchange.getRemoteAddress().getAddress().getHostAddress();
 
         if (candidateService.hasUserVoted(userIp)) {
-            String votedCandidateId = candidateService.getUserVote(userIp);
-            Candidate candidate = candidateService.getCandidateById(votedCandidateId);
-
-            Map<String, Object> thankYouData = new HashMap<>();
-            thankYouData.put("candidate", candidate);
-            thankYouData.put("votesPercentage", candidate.getVotesPercentage(candidateService.getTotalVotes()));
-
-            renderTemplate(exchange, "thankyou.ftlh", thankYouData);
+            redirect303(exchange, "/");
             return;
         }
 
@@ -119,11 +132,7 @@ public class VotingServer extends BasicServer {
         Cookie voteCookie = Cookie.make(VOTE_COOKIE_NAME, candidateId);
         setCookie(exchange, voteCookie);
 
-        Map<String, Object> thankYouData = new HashMap<>();
-        thankYouData.put("candidate", candidate);
-        thankYouData.put("votesPercentage", candidate.getVotesPercentage(candidateService.getTotalVotes()));
-
-        renderTemplate(exchange, "thankyou.ftlh", thankYouData);
+        redirect303(exchange, "/");
     }
 
     private String getBody(HttpExchange exchange) {
