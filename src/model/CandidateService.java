@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class CandidateService {
     private List<Candidate> candidates;
-    private final Map<String, String> userVotes = new HashMap<>(); // IP -> candidateId
+    private final Map<String, String> userVotes = new HashMap<>();
     private static final String DATA_FILE = "data/json/candidates.json";
 
     public CandidateService() {
@@ -78,5 +78,9 @@ public class CandidateService {
         return candidates.stream()
                 .sorted(Comparator.comparing(Candidate::getVotes).reversed())
                 .collect(Collectors.toList());
+    }
+
+    public String removeUserVote(String userIp) {
+        return userVotes.remove(userIp);
     }
 }
