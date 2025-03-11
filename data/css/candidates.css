@@ -1,19 +1,19 @@
-/* Темный стиль с зеленым акцентом в стиле Attractor School */
+/* в стиле Attractor School Almaty */
 :root {
-  --primary-color: #1a1a1a; /* Основной цвет фона */
-  --accent-color: #57e389; /* Зеленый акцент */
-  --accent-hover: #3bd672; /* Зеленый при наведении */
-  --dark-color: #111111; /* Темный цвет */
-  --light-color: #f8f8f8; /* Светлый цвет для текста */
-  --gray-color: #888888; /* Серый цвет */
-  --white-color: #ffffff; /* Белый цвет */
-  --card-bg: #222222; /* Фон карточки */
-  --card-bg-hover: #2c2c2c; /* Фон карточки при наведении */
-  --card-border: #333333; /* Граница карточки */
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Тень */
-  --border-radius: 20px; /* Скругление углов */
-  --border-glow: 0 0 10px rgba(87, 227, 137, 0.5); /* Свечение границы */
-  --transition: all 0.3s ease; /* Плавность анимации */
+  --primary-color: #1a1a1a;
+  --accent-color: #57e389;
+  --accent-hover: #3bd672;
+  --dark-color: #111111;
+  --light-color: #f8f8f8;
+  --gray-color: #888888;
+  --white-color: #ffffff;
+  --card-bg: #222222;
+  --card-bg-hover: #2c2c2c;
+  --card-border: #333333;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --border-radius: 20px;
+  --border-glow: 0 0 10px rgba(87, 227, 137, 0.5);
+  --transition: all 0.3s ease;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -38,7 +38,7 @@ html, body {
   padding: 3rem 0;
 }
 
-/* Типография */
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
@@ -55,7 +55,7 @@ p {
   color: var(--light-color);
 }
 
-/* Флекс контейнеры */
+
 .flex {
   display: flex;
 }
@@ -77,7 +77,6 @@ p {
   justify-content: space-evenly;
 }
 
-/* Кнопки */
 .vote, .back {
   display: inline-block;
   text-align: center;
@@ -133,7 +132,6 @@ p {
   gap: 0.5rem;
 }
 
-/* Карточки кандидатов */
 .card {
   flex: 0 0 calc(33.333% - 2rem);
   margin: 1rem;
@@ -181,7 +179,6 @@ p {
   width: 100%;
 }
 
-/* Страница результатов голосования */
 .results-info {
   background-color: var(--card-bg);
   padding: 1rem 1.5rem;
@@ -270,7 +267,6 @@ p {
   margin-top: 0.2rem;
 }
 
-/* Разделитель */
 .separator {
   width: 100%;
   height: 1px;
@@ -279,7 +275,6 @@ p {
   opacity: 0.7;
 }
 
-/* Адаптивность */
 @media (max-width: 992px) {
   .card {
     flex: 0 0 calc(50% - 2rem);
@@ -301,7 +296,6 @@ p {
   }
 }
 
-/* Страница "Спасибо за голос" */
 .thank-you-container {
   text-align: center;
   padding: 2.5rem;
@@ -357,7 +351,6 @@ p {
   font-weight: 700;
 }
 
-/* Страница ошибки */
 .error-container {
   text-align: center;
   padding: 2.5rem;
